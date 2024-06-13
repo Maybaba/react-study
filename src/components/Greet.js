@@ -1,13 +1,17 @@
 import React from "react";
+import Card from './UI/Card.js';
 
-const Greet = () => {
+const Greet = (cccc) => {
 
     return (
-        <ul>
-            <li>사과</li>
-            <li>딸기</li>
-        </ul>
-
+      <Card className='boader-blue'>
+          <>
+          <div>
+            <h1>Hello REACT@@@</h1>
+            {cccc.children}
+          </div>
+          </>
+      </Card>
     );
 };
 
