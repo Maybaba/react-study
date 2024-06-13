@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './ExpenseForm.css';
 
-const ExpenseForm = () => {
+const ExpenseForm = ({ onAdd }) => {
 
     //입력 칸에 있는 3개의 값을 상태값으로 관리
     // const [title, setTitle] = useState('');
@@ -76,6 +76,9 @@ const ExpenseForm = () => {
         //     date
         // };
         console.log(userInput);
+
+        //App.js에게 받은 함수를 호출
+        onAdd(userInput);
 
         //form input 다시 빈칸으로 두는 법
         setUserInput({

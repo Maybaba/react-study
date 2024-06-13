@@ -3,6 +3,7 @@ import React from 'react';
 import './App.css';
 import NewExpense from './components/new-expense/NewExpense.js';
 import ExpenseList from './components/expenses/ExpenseList.js';
+import CheckboxStyle from './components/practice/CheckboxStyle.js'
 
 const App = () => {
 
@@ -25,9 +26,18 @@ const App = () => {
         },
     ];
 
+    //ExpenseForm에게 내려보낼 함수
+    const onAddExpense = (userInput) => {
+        console.log('App.js가 내려보낸 함수 호출 ! ');
+        console.log(userInput);
+        expenses.push(userInput);
+        console.log(expenses);
+    };
+
     return (
         <>
-        <NewExpense />
+        <CheckboxStyle  />
+        <NewExpense onSave={onAddExpense}/>
         <ExpenseList expenses={expenses}/>
 
         </>
