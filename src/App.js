@@ -1,10 +1,8 @@
 
 import React from 'react';
 import './App.css';
-import Greet from './components/Greet.js';
-import Hello from './components/Hello.js';
+import NewExpense from './components/new-expense/NewExpense.js';
 import ExpenseList from './components/expenses/ExpenseList.js';
-import Counter from './components/practice/Counter.js';
 
 const App = () => {
 
@@ -29,27 +27,9 @@ const App = () => {
 
     return (
         <>
-        <Counter />
+        <NewExpense />
         <ExpenseList expenses={expenses}/>
-        <Greet>
-            
-            <Hello></Hello>
-            <ul>
-                <li>사과</li>
-                <li>포도</li>
-                <li>오렌지</li>
-            </ul>
-            </ Greet>
-        <Greet>
-            <ol>
-                <li>하나</li>
-                <li>둘</li>
-                <li>셋</li>
-            </ol>
-            </ Greet>
-            <Greet>
-                <a href='#'>링크</a>
-            </Greet>
+
         </>
     );
 };
