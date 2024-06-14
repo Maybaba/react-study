@@ -28,13 +28,35 @@ const App = () => {
         setGoals([...goals, goalObject]);
     };
 
+    //courseList -> courseItem에게 전달할 함수
+    const deleteGoalHandler = (id) => {
+        console.log('id :', id);
+
+        let index = -1;
+        for(let i =0; i < goals.length; i++) {
+            if(goals[i].id === id) {
+                index = i;
+                break;
+            }
+        }
+        console.log('index', index);
+        //아래와 같이 3가지 방법이 있다.
+        // goals.splice(index, 1);
+        // goals.splice(goals.findIndex(g=>g.id ===id),1);
+
+        //필터는 새 배열을 주기 때문에 복사할 코드를 쓰지 아도 깔끔하게 처리할 수 이따 !
+        setGoals(goals.filter(g=>g.id!=id));
+
+        setGoals([...goals]);
+    }
+
     return (
         <div>
             <section id="goal-form">
                 <CourseInput onAdd={addGoalHandler} />
             </section>
             <section id="goals">
-                <CourseList items={goals} />
+                <CourseList items={goals} onDelete={{deleteGoalHandler}} />
             </section>
         </div>
     );
