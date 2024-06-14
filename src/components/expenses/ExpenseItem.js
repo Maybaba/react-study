@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ExpenseItem.css';
-import ExpenseDate from './ExpenseDate';
-import Card from '../UI/Card';
+import ExpenseDate from './ExpenseDate.js';
+import Card from '../UI/Card.js';
 
 const ExpenseItem = ({ date, title, price: exPrice }) => {
 
@@ -49,7 +49,6 @@ const ExpenseItem = ({ date, title, price: exPrice }) => {
           <h2>{itemTitle}</h2>
           <div className='expense-item__price'>{formattedPrice}원</div>
         </div>
-        <button id='btn' onClick={clickHandler}>제목수정</button>
       </Card>
   )
 }

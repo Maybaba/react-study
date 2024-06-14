@@ -1,9 +1,8 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import NewExpense from './components/new-expense/NewExpense.js';
 import ExpenseList from './components/expenses/ExpenseList.js';
-import CheckboxStyle from './components/practice/CheckboxStyle.js'
+import NewExpense from './components/new-expense/NewExpense.js';
 
 const App = () => {
 
@@ -31,25 +30,37 @@ const App = () => {
         },
     ];
 
-    //ExpenseForm에게 내려보낼 함수
+
+
+    // 배열을 상태변수로 관리
+    const [expenseList, setExpenseList] = useState(expenses);
+
+
+    // ExpenseForm에게 내려보낼 함수
     const onAddExpense = (userInput) => {
-        console.log('App.js가 내려보낸 함수 호출 ! ');
-        console.log(userInput);
-        expenses.push(userInput);
-        console.log(expenses);
+        console.log('App.js 가 내려보낸 함수 호출!');
+        // console.log(userInput);
+        expenseList.push(userInput);
+
+        //배열 새로 복사하기
+        const newExpenseList = [...expenseList, userInput];
+        setExpenseList(expenseList);
+
+        console.log(newExpenseList);
+
     };
 
     return (
         <>
-        <CheckboxStyle  />
-        <NewExpense onSave={onAddExpense}/>
-        <ExpenseList expenses={expenses}/>
-
+            <NewExpense onSave={onAddExpense}/>
+            <ExpenseList expenses={expenseList}/>
         </>
     );
 };
 
 export default App;
+
+
 
 // function App() {
 

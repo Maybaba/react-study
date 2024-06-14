@@ -78,7 +78,10 @@ const ExpenseForm = ({ onAdd }) => {
         console.log(userInput);
 
         //App.js에게 받은 함수를 호출
-        onAdd(userInput);
+        onAdd({
+            ...userInput,
+            date : new Date(userInput.date) //날짜 객체만 문자열을 getfullyear 적용되게끔 날짜로 변환하기
+        });
 
         //form input 다시 빈칸으로 두는 법
         setUserInput({
@@ -121,6 +124,7 @@ const ExpenseForm = ({ onAdd }) => {
                 </div>
             </div>
             <div className="new-expense__actions">
+                <button type="submit">Add Expense</button>
                 <button type="submit">Add Expense</button>
             </div>
         </form>
