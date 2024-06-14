@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './NewExpense.css';
 import ExpenseForm from './ExpenseForm.js';
 
 const NewExpense = ({ onSave }) => {
 
-    const newExpenseContent =   <ExpenseForm onAdd={onSave} />
+    const [toggle, setToggle] = useState(false);
 
-    const noContent = <button>새로운 지출 추가하기</button>;
+    const startInsertModeHamdler = () => setToggle(true);
+    const stopInsertModeHamdler = () => setToggle(false);
 
+    let newExpenseContent = <button onClick={startInsertModeHamdler}>새로운 지출 추가하기</button>;
+
+    if(toggle) newExpenseContent = <ExpenseForm onAdd={onSave} onCancel={stopInsertModeHamdler}/>
+
+
+    //이거 어떻게 쓰지
     return (
         <div className="new-expense">
-            {noContent}
+            {newExpenseContent}
+            <ExpenseForm />
         </div>
     );
 };
