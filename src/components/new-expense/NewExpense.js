@@ -13,8 +13,6 @@ const NewExpense = ({ onSave }) => {
 
     if(toggle) newExpenseContent = <ExpenseForm onAdd={onSave} onCancel={stopInsertModeHamdler}/>
 
-
-    //이거 어떻게 쓰지
     return (
         <div className="new-expense">
             {newExpenseContent}

@@ -1,47 +1,95 @@
 import React, { useState } from 'react';
+import CourseInput from './components/CourseGoals/CourseInput';
+import CourseList from './components/CourseGoals/CourseList';
 import './App.css';
-import ExpenseList from './components/expenses/ExpenseList';
-import NewExpense from './components/new-expense/NewExpense';
+
+//기본 더미 데이터
+const DUMMY_DATA = [
+    {
+        id:'g1',
+        text: '리액트 컴포넌트 스타일링 마스터 하기'
+    },
+    {
+        id:'g2',
+        text: 'UI 설계 고수 되 기'
+    },
+    {
+        id:'g3',
+        text: '그냥 만들고 싶은걸 자유롭게 만들고 싶다. . . '
+    },
+]
 
 const App = () => {
 
-    // 서버에서 지출항목 JSON 배열을 응답받음
-    const expenses = [
-        {
-            title: '전공책',
-            price: 10000,
-            date: new Date(2024, 2-1, 3) // 1월이 0으로 되어있고 2월이 1이 되어있음
-        },
-        {
-            title: '손금책',
-            price: 2000,
-            date: new Date(2023, 7-1, 7)
-        },
-        {
-            title: '아이스크림케이크',
-            price: 44000,
-            date: new Date(2021, 2-1, 29)
-        },
-        {
-            title: '그릭요거트',
-            price: 3000,
-            date: new Date(2022, 13-1, 11)
-        },
-    ];
+    const [goals, setGoals] = useState(DUMMY_DATA);
 
-    // 배열을 상태변수로 관리
-    const [expenseList, setExpenseList] = useState(expenses);
-
-
-    // ExpenseForm에게 내려보낼 함수
-    const onAddExpense = (userInput) => setExpenseList([...expenseList, userInput]);
+    //상향식 데이터 전달 couerseInput에게 전달할 함수
+    const addGoalHandler = (goalObject) => {
+        setGoals([...goals, goalObject]);
+    };
 
     return (
-        <>
-            <NewExpense onSave={onAddExpense} />
-            <ExpenseList expenses={expenseList} />
-        </>
+        <div>
+            <section id="goal-form">
+                <CourseInput onAdd={addGoalHandler} />
+            </section>
+            <section id="goals">
+                <CourseList items={goals} />
+            </section>
+        </div>
     );
 };
 
 export default App;
+
+
+
+// import React, { useState } from 'react';
+// import './App.css';
+// import ExpenseList from './components/expenses/ExpenseList';
+// import NewExpense from './components/new-expense/NewExpense';
+//
+// const App = () => {
+//
+//     // 서버에서 지출항목 JSON 배열을 응답받음
+//     const expenses = [
+//         {
+//             title: '전공책',
+//             price: 10000,
+//             date: new Date(2024, 2-1, 3) // 1월이 0으로 되어있고 2월이 1이 되어있음
+//         },
+//         {
+//             title: '손금책',
+//             price: 2000,
+//             date: new Date(2023, 7-1, 7)
+//         },
+//         {
+//             title: '아이스크림케이크',
+//             price: 44000,
+//             date: new Date(2021, 2-1, 29)
+//         },
+//         {
+//             title: '그릭요거트',
+//             price: 3000,
+//             date: new Date(2022, 13-1, 11)
+//         },
+//     ];
+//
+//     // 배열을 상태변수로 관리
+//     const [expenseList, setExpenseList] = useState(expenses);
+//
+//
+//     // ExpenseForm에게 내려보낼 함수
+//     const onAddExpense = (userInput) => setExpenseList([...expenseList, userInput]);
+//
+//     return (
+//         <>
+//             <NewExpense onSave={onAddExpense} />
+//             <ExpenseList expenses={expenseList} />
+//         </>
+//     );
+// };
+//
+// export default App;
+
+
