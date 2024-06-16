@@ -123,3 +123,7 @@ npm install moment
  npm install react-modal
 ```
 
+8. react boot strap install
+```angular2html
+npm install react-bootstrap bootstrapgti
+```
