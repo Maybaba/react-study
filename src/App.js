@@ -32,23 +32,9 @@ const App = () => {
     const deleteGoalHandler = (id) => {
         console.log('id :', id);
 
-        let index = -1;
-        for(let i =0; i < goals.length; i++) {
-            if(goals[i].id === id) {
-                index = i;
-                break;
-            }
-        }
-        console.log('index', index);
-        //아래와 같이 3가지 방법이 있다.
-        // goals.splice(index, 1);
-        // goals.splice(goals.findIndex(g=>g.id ===id),1);
-
         //필터는 새 배열을 주기 때문에 복사할 코드를 쓰지 아도 깔끔하게 처리할 수 이따 !
-        setGoals(goals.filter(g=>g.id!=id));
-
-        setGoals([...goals]);
-    }
+        setGoals(goals.filter(g => g.id !== id));
+    };
 
     return (
         <div>
@@ -56,7 +42,7 @@ const App = () => {
                 <CourseInput onAdd={addGoalHandler} />
             </section>
             <section id="goals">
-                <CourseList items={goals} onDelete={{deleteGoalHandler}} />
+                <CourseList items={goals} onDelete={deleteGoalHandler} />
             </section>
         </div>
     );
@@ -65,53 +51,20 @@ const App = () => {
 export default App;
 
 
+// let index = -1;
+// for(let i =0; i < goals.length; i++) {
+//     if(goals[i].id === id) {
+//         index = i;
+//         break;
+//     }
+// }
 
-// import React, { useState } from 'react';
-// import './App.css';
-// import ExpenseList from './components/expenses/ExpenseList';
-// import NewExpense from './components/new-expense/NewExpense';
-//
-// const App = () => {
-//
-//     // 서버에서 지출항목 JSON 배열을 응답받음
-//     const expenses = [
-//         {
-//             title: '전공책',
-//             price: 10000,
-//             date: new Date(2024, 2-1, 3) // 1월이 0으로 되어있고 2월이 1이 되어있음
-//         },
-//         {
-//             title: '손금책',
-//             price: 2000,
-//             date: new Date(2023, 7-1, 7)
-//         },
-//         {
-//             title: '아이스크림케이크',
-//             price: 44000,
-//             date: new Date(2021, 2-1, 29)
-//         },
-//         {
-//             title: '그릭요거트',
-//             price: 3000,
-//             date: new Date(2022, 13-1, 11)
-//         },
-//     ];
-//
-//     // 배열을 상태변수로 관리
-//     const [expenseList, setExpenseList] = useState(expenses);
-//
-//
-//     // ExpenseForm에게 내려보낼 함수
-//     const onAddExpense = (userInput) => setExpenseList([...expenseList, userInput]);
-//
-//     return (
-//         <>
-//             <NewExpense onSave={onAddExpense} />
-//             <ExpenseList expenses={expenseList} />
-//         </>
-//     );
-// };
-//
-// export default App;
+// console.log('index', index);
+//아래와 같이 3가지 방법이 있다.
+// goals.splice(index, 1);
+// goals.splice(goals.findIndex(g=>g.id ===id),1);
+
+
+
 
 

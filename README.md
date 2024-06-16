@@ -91,5 +91,11 @@ $ cd 프로젝트폴더
 $ npm start
 ```
 
-- http://localhost:3000 에서 프론트엔드 서버 실행
+- http://localhost:3000 에서 프론트엔드 서버 자동 실행
+
+5. 클론 받은 경우 
+```angular2html
+npm install 
+```
+- 노드 모듈 라이브러리 루트 설치 후 개발
 
