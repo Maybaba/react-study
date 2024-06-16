@@ -99,3 +99,27 @@ npm install
 ```
 - 노드 모듈 라이브러리 루트 설치 후 개발
 
+- 노드 모듈 라이브러리 루트 설치 후 개발
+
+6. npm calendar install
+```angular2html
+npm install react-big-calendar moment
+```
+- EEXIST 에러 발생 시 캐시 삭제 후 재설치
+```angular2html
+npm cache clean --force
+
+rm -rf node_modules package-lock.json
+
+npm install
+
+npm install react-big-calendar
+
+npm install moment
+```
+
+7. react modal install
+```angular2html
+ npm install react-modal
+```
+
