@@ -127,3 +127,11 @@ npm install moment
 ```angular2html
 npm install react-bootstrap bootstrapgti
 ```
+
+9. styled components install
+```angular2html
+npm install --save styled-components 
+//작업하는 폴더 경로에 설치한다. 
+
+import styled from 'styled-components';
+```

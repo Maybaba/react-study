@@ -48,15 +48,16 @@ const CourseInput = ({onAdd}) => {
 
     return (
         <form onSubmit={formSubmitHandler}>
-            <div className="form-control">
+            <div className={`form-control ${isValid ? '' : 'invalid'}`}>
                 <label>나의 목표</label>
                 <input type="text"
                        onChange={goalChangeHandler}
                        value={enteredText}
-                       style={{
-                           backgroundColor: isValid ? 'transparent' : 'salmon',
-                           borderColor:isValid ? 'blue': 'red',
-                }}/>
+                //        style={{
+                //            backgroundColor: isValid ? 'transparent' : 'salmon',
+                //            borderColor:isValid ? 'blue': 'red',
+                // }}
+                />
             </div>
             <Button type="submit" >목표 추가</Button>
         </form>
@@ -65,16 +66,4 @@ const CourseInput = ({onAdd}) => {
 
 export default CourseInput;
 
-    //     // App.js에게 받은 함수를 호출
-    //     onAdd({
-    //         ...userInput,
-    //         date: new Date(userInput.date)
-    //     });
-    //
-    //     // form input 비우기
-    //     setUserInput({
-    //         title: '',
-    //         price: '',
-    //         date: ''
-    //     });
 
