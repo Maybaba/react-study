@@ -9,7 +9,7 @@ const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
-        console.log('로그인 검사 수행!');
+        // console.log('로그인 검사 수행!');
         const storedLoginFlag = localStorage.getItem('login-flag');
         if (storedLoginFlag === '1') {
             setIsLoggedIn(true);

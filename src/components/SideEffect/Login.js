@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 
 import Card from '../UI/Card';
 import styles from './Login.module.css';
 import Button from '../UI/Button';
 
 const Login = ({ onLogin }) => {
+
+    console.log('렌더링 수행');
+
     const [enteredEmail, setEnteredEmail] = useState('');
     const [emailIsValid, setEmailIsValid] = useState();
     const [enteredPassword, setEnteredPassword] = useState('');
@@ -13,19 +16,11 @@ const Login = ({ onLogin }) => {
 
     const emailChangeHandler = (e) => {
         setEnteredEmail(e.target.value);
-
-        setFormIsValid(
-            e.target.value.includes('@') && enteredPassword.trim().length > 6
-        );
     };
 
 
     const passwordChangeHandler = (e) => {
         setEnteredPassword(e.target.value);
-
-        setFormIsValid(
-            e.target.value.trim().length > 6 && enteredEmail.includes('@')
-        );
     };
 
     const validateEmailHandler = () => {
@@ -42,6 +37,15 @@ const Login = ({ onLogin }) => {
         e.preventDefault();
         onLogin(enteredEmail, enteredPassword);
     };
+
+    useEffect(() => {
+        console.log('useEffect call in Login.js');
+        setFormIsValid(
+            enteredPassword.trim().length > 6 && enteredEmail.includes('@') //버튼을 잠글지, 열지 지속적으로 필요하다.
+        );
+    }, [enteredEmail, enteredPassword]); //이 배열의 용도는 입력된 값을 검증할 때 enteredPassword, enteredEmail 상태변수와 prop을 쓰고 있으면 그 값을 배열에 넣는다.
+    //배열에서 dependency가 필요한 경우 터미널에도 넣으라고 쓴다.
+    //useEffect에서는 fetch get밖에 안함
 
     return (
         <Card className={styles.login}>
