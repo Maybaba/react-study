@@ -120,11 +120,15 @@ const Login = ({ onLogin }) => {
         onLogin(emailState.inputValue, passwordState.inputValue);
     };
 
+    // emailState와 passwordState에서 isValid 추출
+    const { isVaild: emailIsValid } = emailState;
+    const { isVaild: passwordIsValid } = passwordState;
+
     useEffect(() => {
         const timer = setTimeout(() => {
             console.log('useEffect call in Login.js');
             setFormIsValid(
-                passwordState.isVaild && emailState.isVaild
+                emailIsValid && passwordIsValid
             );
         }, 1000);
 
@@ -133,7 +137,7 @@ const Login = ({ onLogin }) => {
             // console.log('cleanup: ', enteredEmail);
             clearTimeout(timer);
         };
-    });
+    }, [emailIsValid, passwordIsValid]);
 
     // console.log('render: ', enteredEmail);
 
@@ -142,7 +146,7 @@ const Login = ({ onLogin }) => {
             <form onSubmit={submitHandler}>
                 <div
                     className={`${styles.control} ${
-                        emailState.isVaild === false ? styles.invalid : ''
+                        !emailIsValid ? styles.invalid : ''
                     }`}
                 >
                     <label htmlFor="email">E-Mail</label>
@@ -156,7 +160,7 @@ const Login = ({ onLogin }) => {
                 </div>
                 <div
                     className={`${styles.control} ${
-                        passwordState.isVaild === false ? styles.invalid : ''
+                        !passwordIsValid ? styles.invalid : ''
                     }`}
                 >
                     <label htmlFor="password">Password</label>
@@ -183,4 +187,3 @@ const Login = ({ onLogin }) => {
 };
 
 export default Login;
-
