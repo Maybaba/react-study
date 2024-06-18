@@ -5,17 +5,17 @@ const Navigation = () => {
     return (
         <nav className={styles.nav}>
             <ul>
-                <l1>
+                <li>
                     <a href="/">MyPage</a>
-                </l1>
+                </li>
 
-                <l1>
+                <li>
                     <a href="/">Admin</a>
-                </l1>
+                </li>
 
-                <l1>
+                <li>
                     <a href="/">Logout</a>
-                </l1>
+                </li>
 
             </ul>
 
