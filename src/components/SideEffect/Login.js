@@ -38,7 +38,7 @@ const Login = ({ onLogin }) => {
         onLogin(enteredEmail, enteredPassword);
     };
 
-    useEffect(() => {
+    useEffect(() => { //순서는 보장되지 않음. 비동기자나아앙
         console.log('useEffect call in Login.js');
         setFormIsValid(
             enteredPassword.trim().length > 6 && enteredEmail.includes('@') //버튼을 잠글지, 열지 지속적으로 필요하다.
