@@ -1,28 +1,30 @@
-.input {
-    margin: 2rem auto;
-    padding: 1rem;
-    width: 90%;
-    max-width: 40rem;
-}
-
-.input label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    font-size: 1.3em;
-}
-
-.input input {
+.button {
     font: inherit;
-    display: block;
-    width: 100%;
-    border: 1px solid #ccc;
-    padding: 0.15rem;
-    margin-bottom: 0.5rem;
+    border: 1px solid #4f005f;
+    background: #4f005f;
+    color: white;
+    padding: 0.75rem 3.5rem;
+    cursor: pointer;
+    font-size: 1.15rem;
+    border-radius: 30px;
 }
 
-.input input:focus {
+.button:hover,
+.button:active {
+    background: #741188;
+    border-color: #741188;
+}
+
+.button:focus {
     outline: none;
-    border-color: #4f005f;
 }
 
+button:disabled,
+button:focus:disabled,
+button:hover:disabled,
+button:active:disabled {
+    background: #ccc;
+    border-color: #ccc;
+    color: #666666;
+    cursor: not-allowed;
+}
