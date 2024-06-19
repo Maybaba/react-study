@@ -31,7 +31,8 @@ const App = () => {
     return (
         // 중앙저장소 : provider 설정
         <AuthContext.Provider value={{
-            isLoggedIn: isLoggedIn
+            isLoggedIn: isLoggedIn,
+            onLogout: logoutHandler
         }}>
             <MainHeader onLogout={logoutHandler} />
             <main>

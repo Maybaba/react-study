@@ -2,10 +2,10 @@ import React from 'react';
 import styles from'./Navigation.module.css'
 import AuthContext from "../../store/auth-context";
 
-const Navigation = ({ onLogout }) => {
+const Navigation = () => {
 
-    const loginPage = (
-        // 리액트에서 변수에 저장 할 때도 프래그먼트, 전체를 붂는 태그가 필요하다.
+    const loginPage =    (onLogout) => (
+        // 리액트에서 변수에 저장 할 때도 프래그먼트, 전체를 묶는 태그가 필요하다.
         <>
             <li>
                 <a href="/">MyPage</a>
@@ -25,12 +25,12 @@ const Navigation = ({ onLogout }) => {
 
     return (
         <AuthContext.Consumer>
-            {({isLoggedIn}) => {
+            {({isLoggedIn, onLogout}) => {
                 // console.log(context);
                 return (
                     <nav className={styles.nav}>
                         <ul>
-                            {isLoggedIn ? loginPage : anonymousPage}
+                            {isLoggedIn ? loginPage(onLogout) : anonymousPage}
                         </ul>
                     </nav>
                 );
