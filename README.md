@@ -135,3 +135,8 @@ npm install --save styled-components
 
 import styled from 'styled-components';
 ```
+
+10. bootstrap, reactstrap, sass(css ext ver library), reactIcons install
+```angular2html
+npm install bootstrap reactstrap sass react-icon
+```
