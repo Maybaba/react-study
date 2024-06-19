@@ -23,11 +23,16 @@ const App = () => {
         console.log('nextTodoList:',nextTodoList);
     };
 
-    //todolist 렌더링
+    // //리스트 삭제하기
+    const onDelete = (id) => {
+        setTodoList(todoList.filter(todoItem =>
+            todoItem.id !== id
+        ));
+    };
 
 
     return (
-      <TodoTemplate addTodo={addTodo} todoList={todoList} />
+      <TodoTemplate addTodo={addTodo} todoList={todoList} onDel={onDelete} />
     );
 };
 

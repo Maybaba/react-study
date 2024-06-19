@@ -5,11 +5,11 @@ import TodoInput from "./TodoInput";
 import TodoMain from "./TodoMain";
 
 
-const TodoTemplate = ({addTodo, todoList}) => {
+const TodoTemplate = ({addTodo, todoList, onDel}) => {
     return (
         <div className='TodoTemplate'>
             <TodoHeader todoList={todoList} />
-            <TodoMain todoList={todoList}/>
+            <TodoMain todoList={todoList} onDel={onDel}/>
             <TodoInput addTodo={addTodo} />
         </div>
     );

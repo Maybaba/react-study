@@ -3,8 +3,9 @@ import {MdDelete, MdDone} from "react-icons/md";
 
 import './scss/TodoItem.scss';
 
-const TodoItem = ({ context }) => {
+const TodoItem = ({ context , onDel, key}) => {
     console.log(context);
+
 
 
     return (
@@ -13,7 +14,10 @@ const TodoItem = ({ context }) => {
                 <MdDone/>
             </div>
             <span className='text'>{context}</span>
-            <div className='remove'>
+            <div
+                className='remove'
+                onClick={() => onDel(key)} // onDel 함수를 호출하도록 수정
+                >
                 <MdDelete/>
             </div>
         </li>
