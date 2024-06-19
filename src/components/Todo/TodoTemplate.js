@@ -5,12 +5,12 @@ import TodoInput from "./TodoInput";
 import TodoMain from "./TodoMain";
 
 
-const TodoTemplate = () => {
+const TodoTemplate = ({addTodo, todoList}) => {
     return (
         <div className='TodoTemplate'>
-            <TodoHeader />
-            <TodoMain />
-            <TodoInput />
+            <TodoHeader todoList={todoList} />
+            <TodoMain todoList={todoList}/>
+            <TodoInput addTodo={addTodo} />
         </div>
     );
 };

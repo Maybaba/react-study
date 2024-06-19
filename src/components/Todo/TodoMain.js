@@ -3,12 +3,15 @@ import React from 'react';
 import './scss/TodoMain.scss';
 import TodoItem from "./TodoItem";
 
-const TodoMain = () => {
+const TodoMain = ({todoList}) => {
+    console.log('todoMain: ',todoList);
+
     return (
+        //배열을 순회해서 i번째의 아이디와 텍스트를 렌더링
         <ul className='todo-list'>
-            <TodoItem />
-            <TodoItem />
-            <TodoItem />
+            {todoList.map(todo => (
+                <TodoItem key={todo.id} context={todo.text}/>
+            ))}
         </ul>
     );
 };
