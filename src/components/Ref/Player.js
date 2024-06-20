@@ -14,10 +14,11 @@ const Player = () => {
     }
 
     return (
+
         <section id="player">
             <h2>Welcome {enteredName}!</h2>
             <p>
-                <input ref={$nameInputRef} type="text"/>
+                <input ref={$nameInputRef} type="text" />
                 <button onClick={nameChangeHandler}>Set Name</button>
             </p>
         </section>
