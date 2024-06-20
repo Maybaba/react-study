@@ -34,15 +34,41 @@ const TodoTemplate = () => {
         setTodoList(prevTodoList => [...prevTodoList, newTodo])
     };
 
+    //할 일 삭제하기
+    const removeTodo = id => {
+        setTodoList(todoList.filter(todo => todo.id !== id));
+        //서버 붙으면 페치랑 딜리트매핑을 통해 json 받아서 ~~
+        // const res = await fetch(url, {method:'DELETE'})
+            // ... restAPI를 사용해서 서버에 넣을 수 있다.
+    };
+
+    const checkTodo = id => {
+        const copyTodoList = [...todoList];
+
+        const foundTodo = copyTodoList.find(todo => todo.id===id);
+        foundTodo.done = !foundTodo.done;
+        console.log('founded: ', foundTodo);
+
+        setTodoList(copyTodoList);
+
+        //한줄로 값 표현하기
+        // setTodoList(todoList.map(todo =>
+        //     todo.id === id
+        //         ? {...todo, done: !todo.done}
+        //         : todo
+        // ));
+    };
+
+    //남은 할 일 개수 세기
+    const countRestTodo = todoList.filter(todo => !todo.done).length;
+
     return (
         <div className='TodoTemplate'>
-            <TodoHeader/>
-            <TodoMain todos = {todoList}/>
+            <TodoHeader count={countRestTodo}/>
+            <TodoMain todos = {todoList}  onRemove={removeTodo} onCheck={checkTodo} />
             <TodoInput onAdd={addTodo} />
         </div>
     );
 };
-
-
 
 export default TodoTemplate;
