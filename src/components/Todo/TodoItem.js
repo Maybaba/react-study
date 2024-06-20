@@ -3,22 +3,30 @@ import {MdDelete, MdDone} from "react-icons/md";
 
 import './scss/TodoItem.scss';
 
-const TodoItem = ({ context , onDel, key}) => {
-    console.log(context);
+const TodoItem = ({ item, onRemove, onCheck }) => {
 
+    const { id, title, done } = item;
 
+    // 삭제 클릭 이벤트
+    const removeHandler = e => {
+        onRemove(id);
+    };
+
+    const checkHandler = e => {
+        onCheck(id);
+    };
 
     return (
         <li className='todo-list-item'>
-            <div className='check-circle'>
-                <MdDone/>
-            </div>
-            <span className='text'>{context}</span>
             <div
-                className='remove'
-                onClick={() => onDel(key)} // onDel 함수를 호출하도록 수정
-                >
-                <MdDelete/>
+                className={`check-circle ${done ? 'active' : undefined}`}
+                onClick={checkHandler}
+            >
+                {done && <MdDone/>}
+            </div>
+            <span className={`text ${done ? 'finish' : undefined}`}>{title}</span>
+            <div className='remove' onClick={removeHandler}>
+                <MdDelete />
             </div>
         </li>
     );

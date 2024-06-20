@@ -1,46 +1,46 @@
-import React, {useState} from 'react';
-import {MdAdd} from "react-icons/md";
+import React, {useRef, useState} from 'react';
+import { MdAdd } from 'react-icons/md';
 
 import './scss/TodoInput.scss';
 
-const TodoInput = ({addTodo}) => {
+const TodoInput = ({onAdd}) => {
+    //input의 주소값을 기억하는 변수 생성
+    const $textInput = useRef();
 
+    // 입력창 토글링 상태값
+    const [open, setOpen] = useState(false);
 
-    //입력받은 상태값 관리하기
-    const [text, setText] = useState('');
+    // 버튼 토글링 함수 : 이전 상태값 가져와서 그 값에 의해 값 바꾸기 !
+    const onToggle = () => setOpen(prevOpen => !prevOpen);
 
-
-    //입력한 현재 값이 set 되도록 설정하기
-    const onChangeInput = e => {
-        setText(e.target.value);
-        console.log(text);
-    }
-
-
-    //insert를 누르면 입력받은 값 전달받기 ㅋ
-    const onSubmit = (e) => {
+    //submit handler 함수
+    const submitHandler = e=> {
         e.preventDefault();
-        if (text.trim()) {
-            addTodo(text);
-            setText(''); // 입력값 초기화
-        };
-    };
+        //제출되면 값 비우기
+        onAdd($textInput.current.value);
+        $textInput.current.value = '';
+        setOpen(false);
+    }
 
     return (
         <>
-            <div className='form-wrapper'>
-                <form className='insert-form' >
-                    <input
-                        onChange={onChangeInput}
-                        className='inputText'
-                        type='text'
-                        placeholder='할 일을 입력 후, 엔터를 누르세요!'
-                        value={text}
-                    />
-                </form>
-            </div>
-            <button className='insert-btn' type='submit' onClick={onSubmit}>
-                <MdAdd/>
+            {open && (
+                <div className="form-wrapper">
+                    <form className="insert-form" onSubmit={submitHandler}>
+                        <input
+                            ref={$textInput}
+                            type="text"
+                            placeholder="할 일을 입력 후, 엔터를 누르세요!"
+                        />
+                    </form>
+                </div>
+            )}
+
+            <button
+                className={`insert-btn ${open ? 'open' : undefined}`}
+                onClick={onToggle}
+            >
+                <MdAdd />
             </button>
         </>
     );

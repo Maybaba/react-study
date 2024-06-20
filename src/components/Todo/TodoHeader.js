@@ -1,7 +1,7 @@
 import React from 'react';
 import './scss/TodoHeader.scss';
 
-const TodoHeader = ({todoList}) => {
+const TodoHeader = ({count}) => {
     //현재 날짜
     const today = new Date();
 
@@ -15,7 +15,7 @@ const TodoHeader = ({todoList}) => {
         <header>
             <h1>{formattedDate}</h1>
             <div className='day'>{weekday}</div>
-            <div className='tasks-left'>할 일 {todoList.length}개 남음</div>
+            <div className='tasks-left'>할 일 {count}개 남음</div>
         </header>
     );
 };
