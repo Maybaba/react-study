@@ -6,7 +6,7 @@ import './scss/TodoItem.scss';
 const TodoItem = ({ context , onDel, key}) => {
     console.log(context);
 
-
+git
 
     return (
         <li className='todo-list-item'>
