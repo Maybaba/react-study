@@ -1,16 +1,18 @@
 import React, {forwardRef} from 'react';
 
-const ResultModalComponent = ({ result, targetTime, remainingTime}, ref) => {
+const ResultModalComponent = ({ onReset, result, targetTime, remainingTime}, ref) => {
 
+const isLost = remainingTime <= 0;
 
+const formattedRemainingTime = (remainingTime/1000).toFixed(2);
 
     return (
         <dialog ref={ref} className="result-modal">
-            <h2>Your {result}!</h2>
+            {isLost && <h2>Your lost!</h2>}
             <p>The target time was <strong>{targetTime} seconds.</strong></p>
-            <p>You stopped the timer with <strong>{remainingTime} seconds left.</strong></p>
+            <p>You stopped the timer with <strong>{formattedRemainingTime} seconds left.</strong></p>
             <form method="dialog">
-                <button>Close</button>
+                <button onClick={onReset}>Close</button>
             </form>
         </dialog>
     );
