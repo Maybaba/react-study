@@ -11,7 +11,7 @@ const CartProvider = ({children}) => {
     //리듀서 함수 정의
     //state: 업데이트 이전의 상태값
     //action : 어떤 업데이트를 하는 지 정보와 업데이트에 필요한 값을 가진 객체
-    const certReducer = (state, action) => {
+    const cartReducer = (state, action) => {
         if (action.type === 'ADD') { //장바구니 추가
             //상태 업데이트 코드
             return null;//새로운 상태

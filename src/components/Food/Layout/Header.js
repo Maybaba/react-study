@@ -4,7 +4,7 @@ import styles from './Header.module.scss';
 //정적 이미지 로딩하기
 import foodImage from "../../../assets/img/meals.jpg"
 import HeaderCartButton from "./HeaderCartButton";
-const Header = () => {
+const Header = ({onShowCart}) => {
     console.log('styles : ', styles);
 
     const {header, 'main-image':mainImage} = styles;
@@ -13,7 +13,7 @@ const Header = () => {
         <>
         <header className={header}>
             <h1> ReactMeals </h1>
-            <HeaderCartButton />
+            <HeaderCartButton onShow={onShowCart}/>
         </header>
             <div className={mainImage}>
                 <img src={foodImage} alt=""/>

@@ -10,10 +10,10 @@ const ModalOverlay = ({ children }) => {
 };
 
 //아악 모르겠어..... ㅜㅜ 구조가 너무 어려워.. 여기는 다시 만들어 봐야 겠다
-const CartModal = ({ children }) => {
+const CartModal = ({ children, onClose }) => {
     return (
         <>
-        <div className="styles.backdrop" />
+        <div className="styles.backdrop"  onClick={onClose} />
         <ModalOverlay>
             {children}
         </ModalOverlay>

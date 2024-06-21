@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Cart.module.scss';
-import CartModal from "./CartModal";
+import CartModal from './CartModal';
 
 const DUMMY_CART = [
     {
@@ -15,14 +15,8 @@ const DUMMY_CART = [
         amount: 1,
         price: 12000,
     },
-    {
-        id: 'c3',
-        name: '새우버거',
-        amount: 1,
-        price: 10000,
-    },
 ];
-const Cart = () => {
+const Cart = ({ onClose }) => {
     const {
         'cart-items': cartItemStyle,
         total,
@@ -32,7 +26,7 @@ const Cart = () => {
     } = styles;
 
     return (
-            <CartModal>
+        <CartModal onClose={onClose}>
             {/* 주문 내역 */}
             <ul className={cartItemStyle}>
                 {DUMMY_CART.map((cartItem) => (
@@ -41,13 +35,13 @@ const Cart = () => {
             </ul>
             <div className={total}>
                 <span>주문 총액</span>
-                <span>68,000원</span>
+                <span>58,000원</span>
             </div>
             <div className={actions}>
-                <button className={btnAlt}>닫기</button>
+                <button className={btnAlt} onClick={onClose}>닫기</button>
                 <button className={button}>주문</button>
             </div>
-            </CartModal>
+        </CartModal>
     );
 };
 
