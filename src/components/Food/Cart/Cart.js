@@ -17,6 +17,8 @@ const DUMMY_CART = [
     },
 ];
 const Cart = ({ onClose }) => {
+    console.log("styles cart.module.scss",styles)
+
     const {
         'cart-items': cartItemStyle,
         total,
@@ -26,6 +28,7 @@ const Cart = ({ onClose }) => {
     } = styles;
 
     return (
+
         <CartModal onClose={onClose}>
             {/* 주문 내역 */}
             <ul className={cartItemStyle}>

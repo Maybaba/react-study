@@ -6,22 +6,22 @@ import CartProvider from "./store/CartProvider";
 
 const App = () => {
 
-    //장바구니 모달을 열고 닫는 상태변수
+    // 장바구니 모달을 열고 닫는 상태변수
     const [cartIsShown, setCartIsShown] = useState(false);
 
     // 모달을 열어주는 핸들러
     const showCartHandler = () => setCartIsShown(true);
 
-    //모달을 닫아주는 핸들러
+    // 모달을 닫아주는 핸들러
     const hideCartHandler = () => setCartIsShown(false);
 
     return (
         <CartProvider>
             {cartIsShown && <Cart onClose={hideCartHandler} />}
-            <Cart />
-            <Header onShowCart={showCartHandler}/>
-            <div id="main"></div>
-            <Meals />
+            <Header onShowCart={showCartHandler} />
+            <div id="main">
+                <Meals />
+            </div>
         </CartProvider>
     );
 };

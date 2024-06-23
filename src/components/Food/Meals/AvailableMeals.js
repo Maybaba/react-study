@@ -7,25 +7,25 @@ const DUMMY_MEALS = [
     {
         id: 'm1',
         name: '스시',
-        description: '최고급 신선한 생선을 사용!',
+        description: '날것 먹다 배탈나면 죽음',
         price: 23000,
     },
     {
         id: 'm2',
-        name: '족발',
-        description: '쫀득쫀득한 콜라겐의 향연!',
+        name: '마라탕후루',
+        description: '아 마라탕 개뿌시고붓다~',
         price: 34000,
     },
     {
         id: 'm3',
-        name: '띠드버거',
-        description: '띠드버거 사주세요~~~',
+        name: '최고급 국산 콩으로 만든 검은콩두유',
+        description: '두유 한입으로 칼슘을 채워요',
         price: 12000,
     },
     {
         id: 'm4',
-        name: '치킨 샐러드',
-        description: '이거 먹으면 살빠질거 같지?',
+        name: '월넛쿠키',
+        description: '아침으로 쿠키 맛있어',
         price: 8900,
     },
 ];

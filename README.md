@@ -125,7 +125,7 @@ npm install moment
 
 8. react boot strap install
 ```angular2html
-npm install react-bootstrap bootstrapgti
+npm install react-bootstrap bootstrap gti
 ```
 
 9. styled components install
