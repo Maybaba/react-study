@@ -16,7 +16,7 @@ const MealItem = ({id, price, description, name}) => {
     //MealItemForm에서 선택한 수량값을 끌어올려줄 함수
     const addToCartHandler = (amount) => {
 
-        //장바구이네 보낼 객체
+        //장바구이네 보낼 객체 : json
         const item = {
             id: id,
             name: name,
