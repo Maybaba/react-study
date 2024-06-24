@@ -1,8 +1,10 @@
 import React, { useReducer, useState } from 'react';
 import CartContext from './cart-context';
 
+//중앙 관리 상태값 (state)
 const defaultState = {
     items: [], // 장바구니 배열
+    totalPrice: 0, //총액 상태값
 };
 
 // reducer: 여러가지 복잡한 상태관리를 단순화시키며 중앙집중화한다.
@@ -15,10 +17,18 @@ const cartReducer = (state, action) => {
     console.log(' 업데이트 이전 상태 state: ', state);
 
     if (action.type === 'ADD') { // 장바구니 추가
+
         // 상태 업데이트 코드
 
+        //장바구니 배열 상태 업데이트
+        const updateCartItems = [...state.items,action.value];
+
+        //총액 상태 업데이트 : state 값으로 이전의 장바구니 총액 구한다.
+        const upDatePrice = state.totalPrice + (action.value.price * action.value.amount);
+
         return {
-            items: [...state.items,action.value]
+            items : updateCartItems,
+            totalPrice: upDatePrice
         };//새로운 상태
 
         return null; // 새로운 상태
@@ -53,6 +63,7 @@ const CartProvider = ({ children }) => {
         cartItems: cartState.items, // 상태값
         addItem: addItemHandler, // 상태를 업데이트하는 함수
         removeItem: id => {}, // 상태를 업데이트하는 함수
+        totalPrice: cartState.totalPrice
     }; //provider 에서 실제로 제공할 데이터들
 
     return <CartContext.Provider value={cartContext}>{children}</CartContext.Provider>;
