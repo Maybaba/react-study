@@ -44,22 +44,48 @@ const cartReducer = (state, action) => {
         //이미 장바구니에 있었던 상품의 추가
 
         //총액 상태 업데이트 : state 값으로 이전의 장바구니 총액 구한다.
-        const upDatePrice = state.totalPrice + (action.value.price * action.value.amount);
+        const updatePrice = state.totalPrice + (action.value.price * action.value.amount);
 
         return {
             items : updateItems,
-            totalPrice: upDatePrice
+            totalPrice: updatePrice
         };//새로운 상태
 
-        return null; // 새로운 상태
     } else if (action.type === 'REMOVE') { // 장바구니 제거
-        return null; // 새로운 상태
+        const cartItem = action.value;
+
+        const index = state.items.findIndex(item => item.id === cartItem.id);
+
+        if (index !== -1) {
+            //기존에 존재하던 아이템 배열 복사
+            const existingItems = [...state.items];
+            //삭제할 아이템
+            const selectedCartItem = existingItems[index];
+
+            const newAmount = selectedCartItem.amount - action.value.amount;
+
+
+            // amount가 0이거나 0보다 작은 경우 해당 항목을 배열에서 제거
+            if (newAmount <= 0) {
+                existingItems.splice(index, 1);
+            } else {
+                // amount가 0이 아닌 경우 - 만 제거
+                selectedCartItem.amount = newAmount;
+            }
+
+            const updateItems = existingItems; // 삭제 또는 수량 변경 후의 항목 사본
+            const updatePrice = state.totalPrice - (action.value.price * action.value.amount);
+
+            return {
+                items: updateItems,
+                totalPrice: updatePrice
+            };
+        }
     }
     return defaultState; // 새로운 상태
 };
 
 const CartProvider = ({ children }) => {
-
     // 리듀서를 사용하여 상태 데이터를 업데이트
     // param1: 리듀서 함수
     // param2: 초기 상태값
@@ -78,11 +104,20 @@ const CartProvider = ({ children }) => {
         });
     };
 
+    const removeItemHandler = id => {
+        console.log('장바구니에서 데이터 삭제 ! ', id);
+
+        dispatchCartAction({
+            type:'REMOVE',
+            value: id
+        })
+    }
+
     // Provider가 실제로 관리할 상태들의 구체적인 내용들
     const cartContext = {
         cartItems: cartState.items, // 상태값
         addItem: addItemHandler, // 상태를 업데이트하는 함수
-        removeItem: id => {}, // 상태를 업데이트하는 함수
+        removeItem: removeItemHandler, // 상태를 업데이트하는 함수
         totalPrice: cartState.totalPrice
     }; //provider 에서 실제로 제공할 데이터들
 

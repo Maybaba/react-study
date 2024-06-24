@@ -1,11 +1,12 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 
 import styles from './CartItem.module.scss';
-import CartContext from "../../../store/cart-context";
+
+import CartContext from '../../../store/cart-context';
 
 const CartItem = ({ cart }) => {
 
-    const { addItem } = useContext(CartContext); //provider 사용하려면 이렇게 임포트 해줘야 한다.
+    const { addItem, removeItem } = useContext(CartContext);
 
     const { name, price, amount } = cart;
 
@@ -16,19 +17,29 @@ const CartItem = ({ cart }) => {
         amount: amountStyle,
         actions
     } = styles;
+
     const formatPrice = new Intl.NumberFormat('ko-KR').format(price);
 
-    // 하나씩 cart dkdlxpa tnfid 추가하기
     const cartAddHandler = e => {
 
+        // 장바구니에 보낼 객체
+        const item = {
+            ...cart,
+            amount: 1,
+        };
+        addItem(item);
+    };
+
+    const cartRemoveHandler = id => {
         //장바구니에 보낼 객체
         const item = {
-            ...cart, //기존
-            amount: 1,
-        }
-
-        addItem(item);
-    }
+            ...cart,
+            amount: -1,
+        };
+        console.log("cart :" , cart);
+        if(cart.amount < 1) {removeItem(cart.id)}
+        else addItem(item);
+    };
 
     return (
         <li className={cartItem}>
@@ -36,12 +47,12 @@ const CartItem = ({ cart }) => {
                 <h2>{name}</h2>
                 <div className={summary}>
                     <span className={priceStyle}>{formatPrice}</span>
-                    <span className={amountStyle}> {amount}</span>
+                    <span className={amountStyle}>x {amount}</span>
                 </div>
             </div>
             <div className={actions}>
-                <button> − </button>
-                <button className={cartAddHandler}> + </button>
+                <button onClick={cartRemoveHandler}>−</button>
+                <button onClick={cartAddHandler}>+</button>
             </div>
         </li>
     );
