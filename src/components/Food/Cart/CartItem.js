@@ -8,7 +8,7 @@ const CartItem = ({ cart }) => {
 
     const { addItem, removeItem } = useContext(CartContext);
 
-    const { name, price, amount } = cart;
+    const { id, name, price, amount} = cart;
 
     const {
         'cart-item': cartItem,
@@ -30,15 +30,16 @@ const CartItem = ({ cart }) => {
         addItem(item);
     };
 
-    const cartRemoveHandler = id => {
-        //장바구니에 보낼 객체
-        const item = {
-            ...cart,
-            amount: -1,
-        };
-        console.log("cart :" , cart);
-        if(cart.amount < 1) {removeItem(cart.id)}
-        else addItem(item);
+    const cartRemoveHandler = e => {
+        removeItem(id);
+        // //장바구니에 보낼 객체
+        // const item = {
+        //     ...cart,
+        //     amount: -1,
+        // };
+        // console.log("cart :" , cart);
+        // if(cart.amount < 1) {removeItem(cart.id)}
+        // else addItem(item);
     };
 
     return (
