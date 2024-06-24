@@ -20,14 +20,34 @@ const cartReducer = (state, action) => {
 
         // 상태 업데이트 코드
 
-        //장바구니 배열 상태 업데이트
+        //장바구니에 추가될 신규 아이템
+        const newCartItem = action.value;
+
+        //기존에 등록된 메뉴인지 확인해보기 위해 해당 아이템의 인덱스를 탐색 : 기존의 배열 state item 배열에 접근해서 인덱스를 찾고, 그 값에 더해준다.
+        const index = state.items.findIndex(item => item.id === newCartItem.id);
+
+        //기존에 존재하는 아이템배열 사본
+        const existingItems = [...state.items];
+
+        //신규 아이템인 경우
+        let updateItems;
+        if(index === -1) {
+            updateItems = [...existingItems, newCartItem];
+        } else { //이미 장바구니에 있었던 상품의 추가 : 수량만 업데이트
+            existingItems[index].amount += newCartItem.amount;
+            updateItems = [...existingItems]; //사본
+        }
+
+        //기존에 장바구니에 없는 새로운 상품이 장바구니에 추가된 경우
         const updateCartItems = [...state.items,action.value];
+
+        //이미 장바구니에 있었던 상품의 추가
 
         //총액 상태 업데이트 : state 값으로 이전의 장바구니 총액 구한다.
         const upDatePrice = state.totalPrice + (action.value.price * action.value.amount);
 
         return {
-            items : updateCartItems,
+            items : updateItems,
             totalPrice: upDatePrice
         };//새로운 상태
 

@@ -10,4 +10,5 @@ const CartContext = createContext({
     removeItem: (id) => {},  // 장바구니에 상품을 제거하는 함수
 });
 
+
 export default CartContext;

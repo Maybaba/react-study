@@ -5,7 +5,7 @@ import styles from './Header.module.scss';
 import foodImage from "../../../assets/img/meals.jpg"
 import HeaderCartButton from "./HeaderCartButton";
 const Header = ({onShowCart}) => {
-    console.log('styles : ', styles);
+    // console.log('styles : ', styles);
 
     const {header, 'main-image':mainImage} = styles;
 

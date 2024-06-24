@@ -7,7 +7,7 @@ const MealItem = ({id, price, description, name}) => {
 
     //context에서 중앙관리되는 데이터들을 한번에 소비할 수 있는 Hook
     const {addItem}= useContext(CartContext);
-    console.log('ctx in MealItem : ', addItem);
+    // console.log('ctx in MealItem : ', addItem);
 
     const { meal, description: desc, price: priceStyle } = styles;
 
