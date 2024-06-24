@@ -7,7 +7,7 @@ const MealItem = ({id, price, description, name}) => {
 
     //context에서 중앙관리되는 데이터들을 한번에 소비할 수 있는 Hook
     const {addItem}= useContext(CartContext);
-    console.log('ctx in MealItem : ', addItem);
+    // console.log('ctx in MealItem : ', addItem);
 
     const { meal, description: desc, price: priceStyle } = styles;
 
@@ -16,7 +16,7 @@ const MealItem = ({id, price, description, name}) => {
     //MealItemForm에서 선택한 수량값을 끌어올려줄 함수
     const addToCartHandler = (amount) => {
 
-        //장바구이네 보낼 객체
+        //장바구이네 보낼 객체 : json
         const item = {
             id: id,
             name: name,

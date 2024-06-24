@@ -16,6 +16,8 @@ const App = () => {
     const hideCartHandler = () => setCartIsShown(false);
 
     return (
+
+
         <CartProvider>
             {cartIsShown && <Cart onClose={hideCartHandler} />}
             <Header onShowCart={showCartHandler} />
