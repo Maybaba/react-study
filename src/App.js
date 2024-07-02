@@ -1,30 +1,26 @@
-import React, {useState} from 'react';
-import Header from "./components/Food/Layout/Header";
-import Meals from "./components/Food/Meals/Meals";
-import Cart from './components/Food/Cart/Cart';
-import CartProvider from "./store/CartProvider";
+import React from 'react';
+import Home from './components/routeExample/pages/Home';
+import Products from './components/routeExample/pages/Products';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import RootLayout from "./components/routeExample/layout/RootLayout";
+
+// 라우터 설정
+const router = createBrowserRouter([
+//슬래스로 들어오면 엘리먼트를 루트레이아웃으로 로딩하겠다.
+    {
+        path: '/',
+        element: <RootLayout />,
+        children: [
+            { path: '/', element: <Home /> },
+            { path: '/products', element: <Products /> }
+        ]
+    },
+]);
 
 const App = () => {
 
-    // 장바구니 모달을 열고 닫는 상태변수
-    const [cartIsShown, setCartIsShown] = useState(false);
-
-    // 모달을 열어주는 핸들러
-    const showCartHandler = () => setCartIsShown(true);
-
-    // 모달을 닫아주는 핸들러
-    const hideCartHandler = () => setCartIsShown(false);
-
     return (
-
-
-        <CartProvider>
-            {cartIsShown && <Cart onClose={hideCartHandler} />}
-            <Header onShowCart={showCartHandler} />
-            <div id="main">
-                <Meals />
-            </div>
-        </CartProvider>
+        <RouterProvider router={router} />
     );
 };
 
