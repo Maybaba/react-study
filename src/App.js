@@ -4,6 +4,7 @@ import Products from './components/routeExample/pages/Products';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from "./components/routeExample/layout/RootLayout";
 import ErrorPage from "./components/routeExample/pages/ErrorPage";
+import ProductDetail from "./components/routeExample/pages/ProductDetail";
 
 // 라우터 설정
 const router = createBrowserRouter([
@@ -11,13 +12,17 @@ const router = createBrowserRouter([
 
     //절대경로로 path를 정할 수 있다.
     //home을 링크를 비워두고, 하위 경로에서는 ./으로 경로를 장석하면 알아서 자동으로 화면을 로ㅎ딩한다.
+
     {
         path: '/',
         element: <RootLayout />,
         errorElement: <ErrorPage />,
         children: [
             { index: true, element: <Home /> },
-            { path: 'products', element: <Products /> }
+            { path: 'products', element: <Products /> },
+            { path: 'products/:prodId/page/pageNo', element: <ProductDetail /> },
+            // { path: 'products/:prodId/page/pageNo', element: <ProductDetail /> },
+
         ]
     },
 ]);
