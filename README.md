@@ -140,3 +140,8 @@ import styled from 'styled-components';
 ```angular2html
 npm install bootstrap reactstrap sass react-icon
 ```
+
+11. ROUTER install
+```angular2html
+npm install react-router-dom
+```
