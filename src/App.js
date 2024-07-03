@@ -11,34 +11,34 @@ import NewEvent from './components/routeExample/pages/NewEvent';
 
 // 라우터 설정
 const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <RootLayout />,
-      errorElement: <ErrorPage />,
-      children: [
-        { index: true, element: <Home /> },
-        {
-          path: 'events',
-          element: <EventLayout />,
-          children: [
-            { 
-              index: true, 
-              element: <Events />,
-              loader: loader,
-            },
-            { path: ':eventId', element: <EventDetail /> },
-            { path: ':new', element: <NewEvent /> },
-          ]
-        },
-      ]
-    },
-  ]);
+  {
+    path: '/',
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      { index: true, element: <Home /> },
+      {
+        path: 'events',
+        element: <EventLayout />,
+        children: [
+          { 
+            index: true, 
+            element: <Events />,
+            loader: loader,
+          },
+          { path: ':eventId', element: <EventDetail /> },
+          { path: 'new', element: <NewEvent /> }
+        ]
+      },
+    ]
+  },
+]);
+
+const App = () => {
   
-  const App = () => {
-    
-    return (
-      <RouterProvider router={router} />
-    );
-  };
-  
-  export default App;
+  return (
+    <RouterProvider router={router} />
+  );
+};
+
+export default App;

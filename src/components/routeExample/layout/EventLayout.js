@@ -5,10 +5,10 @@ import { Outlet } from 'react-router-dom'
 const EventLayout = () => {
   return (
     <>
-    <EventsNavigation />
-    <Outlet /> 
+      <EventsNavigation />
+      <Outlet />
     </>
-  )
-}
+  );
+};
 
-export default EventLayout
+export default EventLayout;
