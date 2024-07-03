@@ -5,6 +5,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from "./components/routeExample/layout/RootLayout";
 import ErrorPage from "./components/routeExample/pages/ErrorPage";
 import ProductDetail from "./components/routeExample/pages/ProductDetail";
+import Events from "./components/routeExample/pages/Events";
+import EventDetail from "./components/routeExample/pages/EventDetail";
 
 // 라우터 설정
 const router = createBrowserRouter([
@@ -19,8 +21,8 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
         children: [
             { index: true, element: <Home /> },
-            { path: 'products', element: <Products /> },
-            { path: 'products/:prodId/page/pageNo', element: <ProductDetail /> },
+            { path: 'events', element: <Events /> },
+            { path: 'events/:eventId', element: <EventDetail /> },
             // { path: 'products/:prodId/page/pageNo', element: <ProductDetail /> },
 
         ]

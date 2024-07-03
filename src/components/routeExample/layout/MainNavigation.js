@@ -20,7 +20,7 @@ const MainNavigation = () => {
                         <NavLink to="" className={activeFn} end>Home</NavLink>
                     </li>
                     <li>
-                        <NavLink to="./products" className={activeFn}>Products</NavLink>
+                        <NavLink to="./Events" className={activeFn}>Events</NavLink>
                     </li>
                 </ul>
             </nav>
