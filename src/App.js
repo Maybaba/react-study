@@ -7,6 +7,7 @@ import ErrorPage from "./components/routeExample/pages/ErrorPage";
 import ProductDetail from "./components/routeExample/pages/ProductDetail";
 import Events from "./components/routeExample/pages/Events";
 import EventDetail from "./components/routeExample/pages/EventDetail";
+import EventLayout from './components/routeExample/layout/EventLayout';
 
 // 라우터 설정
 const router = createBrowserRouter([
@@ -20,13 +21,16 @@ const router = createBrowserRouter([
         element: <RootLayout />,
         errorElement: <ErrorPage />,
         children: [
-            { index: true, element: <Home /> },
-            { path: 'events', element: <Events /> },
-            { path: 'events/:eventId', element: <EventDetail /> },
-            // { path: 'products/:prodId/page/pageNo', element: <ProductDetail /> },
-
+            {index: true, element: <Home />},
+            { path: 'events',
+                element: <EventLayout />, //여러 페이지에서 한번에 먹힘!
+                children: [
+                    { index: true, element: <Events /> },
+                    { path: ':eventId', element: <EventDetail /> },
+                ]
+            },
         ]
-    },
+    }                // { path: 'products/:prodId/page/pageNo', element: <ProductDetail /> },   
 ]);
 
 const App = () => {
