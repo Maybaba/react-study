@@ -12,7 +12,9 @@ const ErrorPage = () => {
     let errorMessage = "서버와의 연결이 원활하지 않습니다.";
     
     if (error.status === 400) {
-      errorMessage = JSON.parse(error.data).message;
+
+        //갸 ~ 꿀 ~ 
+      errorMessage = error.data.message;
       // console.log(errorMessage);
     }
   

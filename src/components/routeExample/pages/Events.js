@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {Link, useLoaderData} from "react-router-dom"; //라우터 돔에서 링크 컴포넌트 가지고 오기
 import EventList from '../components/EventList';
 import EventsNavigation from '../layout/EventNavication';
+import { useLoaderData, json } from 'react-router-dom';
 
 const Events = () => {
 
@@ -27,8 +28,10 @@ export const loader = async () => {
   
   if (!response.ok) {
     const errorText = await response.text(); // 서버가 내려주는 텍스트 
-    throw new Response(
-      JSON.stringify({ message: errorText }),
+
+    //개꿀 json으로 변환 안해도 됨  ㅋ ㅋ ㅋ
+    throw json(
+      { message: errorText },
       {
         // 서버에서 내려주는 상태코드를 사용할 수 있음 
         status: response.status //옵션 개체로 status를 지정할 수 있음
