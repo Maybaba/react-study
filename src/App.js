@@ -4,8 +4,8 @@ import Products from './components/routeExample/pages/Products';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from "./components/routeExample/layout/RootLayout";
 import ErrorPage from "./components/routeExample/pages/ErrorPage";
-import Events, { loader } from "./components/routeExample/pages/Events";
-import EventDetail from "./components/routeExample/pages/EventDetail";
+import Events, { loader as eventListLoader } from "./components/routeExample/pages/Events"; //전체조회하기 loader
+import EventDetail, { loader as eventDetailLoader } from "./components/routeExample/pages/EventDetail"; //단일조회하기 loader
 import EventLayout from './components/routeExample/layout/EventLayout';
 import NewEvent from './components/routeExample/pages/NewEvent';
 
@@ -25,10 +25,13 @@ const router = createBrowserRouter([
           { 
             index: true, 
             element: <Events />,
-            loader: loader,
+            loader: eventListLoader,
           },
           //eventId는 key로 받을 수 있다. 
-          { path: ':eventId', element: <EventDetail /> },
+          { path: ':eventId', 
+            element: <EventDetail />,
+            loader: eventDetailLoader
+          },
           { path: 'new', element: <NewEvent /> }
         ]
       },
