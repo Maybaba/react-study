@@ -1,24 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import {useLoaderData, useParams} from "react-router-dom";
+import {useLoaderData, useParams, useRpoteLoaderData} from "react-router-dom";
 import EventItem from '../components/EventItem';
 
 const EventDetail = () => {
 
-    const ev = useLoaderData();
+    //사용범위가 본인컴포와 그 하위 컴포 (children은 하위가 아님)
+    // const ev = useLoaderData(); //자신의 loader를 불러옴
 
-    // const { eventId: id } = useParams();
-    // const [ ev, setEv ] = useState({});
-  
-    // useEffect(() => {
-
-    //     ( async () => {
-    //         const response = await fetch(`http://localhost:8282/events/${id}`);
-    //         const json = await response.json();
-    //         console.log("json : ",json);
-    //         setEv(json);
-    //     })();
-
-    // }, []);
+    const ev = useRpoteLoaderData('event-detail'); //부모의 loader를 불러오는 훅
 
     return <EventItem event={ev} />; 
 };
