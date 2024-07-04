@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {useLoaderData, useParams, useRpoteLoaderData} from "react-router-dom";
+import { useLoaderData, useRouteLoaderData } from 'react-router-dom';
 import EventItem from '../components/EventItem';
 
 const EventDetail = () => {
@@ -7,7 +7,7 @@ const EventDetail = () => {
     //사용범위가 본인컴포와 그 하위 컴포 (children은 하위가 아님)
     // const ev = useLoaderData(); //자신의 loader를 불러옴
 
-    const ev = useRpoteLoaderData('event-detail'); //부모의 loader를 불러오는 훅
+    const ev = useRouteLoaderData('event-detail'); //부모의 loader를 불러오는 훅
 
     return <EventItem event={ev} />; 
 };

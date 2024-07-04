@@ -1,8 +1,13 @@
 import React from 'react'
+import EventForm from '../components/EventForm'
+import { useRouteLoaderData } from 'react-router-dom'
 
 const EditPage = () => {
+  //eventDetail
+  const eventDetail = useRouteLoaderData();
+
   return (
-    <div>EditPage!!</div>
+    <EventForm method='patch' />
   )
 }
 
