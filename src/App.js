@@ -47,7 +47,9 @@ const router = createBrowserRouter([
               },
             ]
           },
-          { path: 'new', element: <NewEvent />, 
+          { path: 'new', 
+            element: <NewEvent />, 
+            loader: eventListLoader,
             //서버에 갱신데이터 요청을 보낼 때 트리거
             action: manipulateAction
           },
