@@ -5,10 +5,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from "./components/routeExample/layout/RootLayout";
 import ErrorPage from "./components/routeExample/pages/ErrorPage";
 import Events, { loader as eventListLoader } from "./components/routeExample/pages/Events"; //전체조회하기 loader
-import EventDetail, { loader as eventDetailLoader } from "./components/routeExample/pages/EventDetail"; //단일조회하기 loader
+import EventDetail, { loader as eventDetailLoader, action as deleteAction } from "./components/routeExample/pages/EventDetail"; //단일조회하기 loader
 import EventLayout from './components/routeExample/layout/EventLayout';
-import NewEvent from './components/routeExample/pages/NewEvent';
 import EditPage from './components/routeExample/pages/EditPage';
+import { action as manipulateAction } from './components/routeExample/pages/EventForm';
 
 // 라우터 설정
 const router = createBrowserRouter([
@@ -36,11 +36,21 @@ const router = createBrowserRouter([
             loader: eventDetailLoader,
             // element: <EventDetail />,
             children: [
-              { index: true, element: <EventDetail /> },
-              { path: 'edit', element: <EditPage /> },
+              { 
+                index: true, 
+                element: <EventDetail />,
+                action: deleteAction
+               },
+              { path: 'edit', 
+                element: <EditPage /> ,
+                action: manipulateAction
+              },
             ]
           },
-          { path: 'new', element: <NewEvent /> },
+          { path: 'new', element: <NewEvent />, 
+            //서버에 갱신데이터 요청을 보낼 때 트리거
+            action: manipulateAction
+          },
         ]
       },
     ]
